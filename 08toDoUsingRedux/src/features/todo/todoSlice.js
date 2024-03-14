@@ -25,7 +25,7 @@ export const todoSlice = createSlice({
     },
     // updateTodo: (state, action) => {
     //   state.todos = state.todos.map((todo) => {
-    //     if (todo.id === action.payload) todo.text = action.payload;
+    //     if (todo.id === action.payload) todo.text = "hello";
     //   });
     // },
   },
