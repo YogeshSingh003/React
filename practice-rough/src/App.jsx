@@ -1,26 +1,34 @@
-import { useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import A from "./components/A";
+import New from "./components/New";
+
+const data = createContext();
 
 function App() {
-  const [counter, setCounter] = useState(5);
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("");
 
-  const addValue = () => {
-    if (counter < 20) {
-      setCounter((counter) => counter + 1);
-      setCounter((counter) => counter + 1);
-      setCounter((counter) => counter + 1);
-    }
-  };
+  useEffect(() => {
+    document.title = `${count}`;
+    updateCount();
+  }, [name]);
 
-  const removeValue = function () {
-    if (counter > 0) setCounter(counter - 1);
+  const updateCount = () => {
+    setCount(count + 1);
   };
+  console.log(name);
   return (
     <>
-      <h1>Counter Value : {counter}</h1>
-      <button onClick={addValue}>Add 3 Number</button>
-      <button onClick={removeValue}>Remove Number</button>
+      <data.Provider>
+        <button onClick={updateCount}>Add + 1</button>
+        <input type="text" onChange={(e) => setName(e.target.value)}></input>
+        <h1>
+          Count : {count} Name : {name}
+        </h1>
+      </data.Provider>
     </>
   );
 }
 
 export default App;
+export { data };
