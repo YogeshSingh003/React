@@ -26,7 +26,9 @@ function Form() {
     <>
       <div>
         {flag ? (
-          <h2>Hello {inputData.name}, you've registered successfully</h2>
+          <h2>
+            Hello {inputData.name}, you've registered successfully. Thank You
+          </h2>
         ) : (
           ""
         )}
