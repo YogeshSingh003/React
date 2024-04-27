@@ -1,34 +1,25 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useRef } from "react";
 import A from "./components/A";
-import New from "./components/New";
 
 const data = createContext();
+const data1 = createContext();
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    document.title = `${count}`;
-    updateCount();
-  }, [name]);
-
-  const updateCount = () => {
-    setCount(count + 1);
+  const refElement = useRef("");
+  console.log(refElement);
+  const colorChange = () => {
+    refElement.current.style.padding = "200px";
   };
-  console.log(name);
   return (
-    <>
-      <data.Provider>
-        <button onClick={updateCount}>Add + 1</button>
-        <input type="text" onChange={(e) => setName(e.target.value)}></input>
-        <h1>
-          Count : {count} Name : {name}
-        </h1>
-      </data.Provider>
-    </>
+    <data.Provider value={"Yogesh"}>
+      <data1.Provider value={"Bhati"}>
+        <A></A>
+        <h1 ref={refElement}>Ram Ram</h1>
+        <button onClick={colorChange}>Change</button>
+      </data1.Provider>
+    </data.Provider>
   );
 }
 
 export default App;
-export { data };
+export { data, data1 };
