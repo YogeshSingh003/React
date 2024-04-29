@@ -1,25 +1,22 @@
-import React, { createContext, useRef } from "react";
-import A from "./components/A";
-
-const data = createContext();
-const data1 = createContext();
+import React, { useState } from "react";
 
 function App() {
-  const refElement = useRef("");
-  console.log(refElement);
-  const colorChange = () => {
-    refElement.current.style.padding = "200px";
-  };
+  const [arr, setArr] = useState([]);
+
+  function addItem() {
+    setArr([...arr, { value: "rammm" }]);
+    console.log(arr);
+  }
   return (
-    <data.Provider value={"Yogesh"}>
-      <data1.Provider value={"Bhati"}>
-        <A></A>
-        <h1 ref={refElement}>Ram Ram</h1>
-        <button onClick={colorChange}>Change</button>
-      </data1.Provider>
-    </data.Provider>
+    <>
+      <button onClick={addItem}>Add</button>
+      <div>
+        {arr.map((arr) => (
+          <li>{arr.value}</li>
+        ))}
+      </div>
+    </>
   );
 }
 
 export default App;
-export { data, data1 };
