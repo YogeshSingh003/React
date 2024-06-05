@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./components/button";
 
 function App() {
-  const [color, setColor] = useState("skyblue");
+  const [color, setColor] = useState("#f1f1f1");
 
   return (
     <>
@@ -10,7 +10,7 @@ function App() {
         className="h-screen w-full duration-200"
         style={{ backgroundColor: color }}
       >
-        <div className="fixed flex flex-wrap justify-center bottom-10 inset-x-0 px-2">
+        <div className="absolute flex flex-wrap w-full justify-center bottom-10  px-2">
           <div className="flex justify-center rounded-full bg-white ">
             <Button btnColor="Red" textColor="white" colorSetter={setColor} />
             <Button btnColor="Green" textColor="white" colorSetter={setColor} />
